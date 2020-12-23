@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-youtubechat-dev-105940-authRole",
+            "UnauthRoleArn": "arn:aws:iam::001302591070:role/amplify-youtubechat-dev-105940-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::001302591070:role/amplify-youtubechat-dev-105940-authRole",
+            "Region": "eu-west-2",
+            "DeploymentBucketName": "amplify-youtubechat-dev-105940-deployment",
+            "UnauthRoleName": "amplify-youtubechat-dev-105940-unauthRole",
+            "StackName": "amplify-youtubechat-dev-105940",
+            "StackId": "arn:aws:cloudformation:eu-west-2:001302591070:stack/amplify-youtubechat-dev-105940/f593d610-450d-11eb-b05a-02eb877371f0",
+            "AmplifyAppId": "d3uq1f1dm1v9ho"
+        },
+        "categories": {
+            "auth": {
+                "youtubechat8a56cacd": {}
+            }
+        }
+    }
+}

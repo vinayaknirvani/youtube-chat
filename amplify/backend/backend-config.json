@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"youtubechat8a56cacd": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
