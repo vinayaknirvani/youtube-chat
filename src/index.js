@@ -5,12 +5,17 @@ import App from "./App";
 import config from "./aws-exports";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import reducer from "./store/reducer";
+import initialState from "./store/state";
+import { StateProvider } from "./store/stateProvider";
 
 Amplify.configure(config);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <App />
+    </StateProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,18 +1,24 @@
 import {
   AmplifyAuthenticator,
   AmplifySignIn,
-  AmplifySignOut,
+
   AmplifySignUp
 } from "@aws-amplify/ui-react";
-import { Center, Heading } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { Auth } from "aws-amplify";
-import { SelectMFAType } from "aws-amplify-react";
 import { useEffect, useState } from "react";
+import { Home } from "./Components/Components";
+
 const MFATypes = {
   SMS: true, // if SMS enabled in your user pool
   TOTP: true, // if TOTP enabled in your user pool
   Optional: true, // if MFA is set to optional in your user pool
 };
+
+// App
+//     Home => Navbar
+//          => Content => Room List
+//                     => Chat messages => Messages, Input box to enter new message
 
 function App() {
   const [user, setUser] = useState();
@@ -26,7 +32,7 @@ function App() {
     getUser();
   }, []);
   return (
-    <>
+    <ChakraProvider>
       <AmplifyAuthenticator usernameAlias="email">
         <AmplifySignIn slot="sign-in" usernameAlias="email" />
         <AmplifySignUp
@@ -66,12 +72,8 @@ function App() {
           ]}
         />
       </AmplifyAuthenticator>
-      <Center h="100vh" as={Heading}>
-        Hello {user?.attributes.given_name}!!!
-        <AmplifySignOut />
-        <SelectMFAType authData={user} MFATypes={MFATypes} />
-      </Center>
-    </>
+      <Home/>
+    </ChakraProvider>
   );
 }
 

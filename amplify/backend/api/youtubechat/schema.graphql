@@ -1,0 +1,37 @@
+type Room
+  @model
+  @auth(rules: [{ allow: owner }, { allow: private, operations: [read] }])
+  @searchable {
+  id: ID!
+  name: String!
+  createdAt: AWSDateTime!
+  owner: ID!
+  messages: [Message]
+    @connection(
+      keyName: "messagesByRoom"
+      fields: ["id"]
+      sortField: "createdAt"
+    )
+}
+
+type Message
+  @model
+  @auth(rules: [{ allow: owner }, { allow: private, operations: [read] }])
+  @key(
+    name: "messagesByRoom"
+    fields: ["roomId"]
+    queryField: "listMessagesByRoom"
+  ) {
+  id: ID!
+  roomId: ID!
+  message: String
+  senderName: String
+  createdAt: AWSDateTime!
+  owner: ID!
+  room: Room! @connection(fields: ["roomId"])
+}
+
+type Subscription {
+  onMessageCreated(roomId: ID!): Message
+    @aws_subscribe(mutations: ["createMessage"])
+}

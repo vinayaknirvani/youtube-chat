@@ -16,3 +16,9 @@ code {
   margin: 0;
   overflow: hidden;
 }
+
+:root {
+  --amplify-primary-color: #3976e7;
+  --amplify-primary-tint: #744210;
+  --amplify-primary-shade: #f6e05e;
+}
